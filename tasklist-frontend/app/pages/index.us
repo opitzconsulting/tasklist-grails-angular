@@ -11,12 +11,12 @@
     [ <a href="" ng-click="archive()">archive</a> ]
     <ul>
         <li ng-repeat="todo in todos">
-            <input type="checkbox" ng-model="todo.done">
-            <span class="done-{{todo.done}}">{{todo.text}}</span>
+            <input type="checkbox" ng-checked="todo.done" ng-click="updateTodo(todo)">
+            <span class="done-{{todo.done}}">{{todo.title}}</span>
         </li>
     </ul>
     <form ng-submit="addTodo()">
-        <input type="text" ng-model="todoText" size="30"
+        <input type="text" ng-model="todoTitle" size="30"
                placeholder="add new todo here">
         <input type="submit" value="add">
     </form>

@@ -1,13 +1,18 @@
-angular.module("app").controller("TodoCtrl", function ($scope) {
+angular.module("app").controller("TodoCtrl", function ($scope, TodoResource) {
 
-    $scope.todos = [
-        {text: 'learn angular', done: true},
-        {text: 'build an angular app', done: false}
-    ];
+    $scope.todos = TodoResource.query();
 
     $scope.addTodo = function () {
-        $scope.todos.push({text: $scope.todoText, done: false});
-        $scope.todoText = '';
+        var newTodo = new TodoResource({title: $scope.todoTitle, done: false});
+        newTodo.$save(function (savedTodo) {
+            $scope.todos.push(savedTodo);
+        });
+        $scope.todoTitle = '';
+    };
+
+    $scope.updateTodo = function(todo) {
+        todo.done = !todo.done;
+        todo.$update();
     };
 
     $scope.remaining = function () {

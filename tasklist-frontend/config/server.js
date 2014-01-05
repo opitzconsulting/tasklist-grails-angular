@@ -14,7 +14,7 @@
 
 module.exports = {
     drawRoutes: function (app) {
-        app.get('/tasks', function (req, res) {
+        app.get('/mock/tasks', function (req, res) {
             res.json([
                 {title: 'Task 1', done: true},
                 {title: 'Task 2', done: false},
