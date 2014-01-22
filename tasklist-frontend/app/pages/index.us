@@ -5,19 +5,19 @@
     <link rel="stylesheet" type="text/css" href="/css/app.css" media="all"/>
 </head>
 <body>
-<h2>Todo</h2>
-<div ng-controller="TodoCtrl">
-    <span>{{remaining()}} of {{todos.length}} remaining</span>
+<h2>Tasks</h2>
+<div ng-controller="TaskCtrl">
+    <span>{{remaining()}} of {{tasks.length}} remaining</span>
     [ <a href="" ng-click="archive()">archive</a> ]
     <ul>
-        <li ng-repeat="todo in todos">
-            <input type="checkbox" ng-checked="todo.done" ng-click="updateTodo(todo)">
-            <span class="done-{{todo.done}}">{{todo.title}}</span>
+        <li ng-repeat="task in tasks">
+            <input type="checkbox" ng-checked="task.done" ng-click="updateTask(task)">
+            <span class="done-{{task.done}}">{{task.title}}</span>
         </li>
     </ul>
-    <form ng-submit="addTodo()">
-        <input type="text" ng-model="todoTitle" size="30"
-               placeholder="add new todo here">
+    <form ng-submit="addTask()">
+        <input type="text" ng-model="taskTitle" size="30"
+               placeholder="add new task here">
         <input type="submit" value="add">
     </form>
 </div>
