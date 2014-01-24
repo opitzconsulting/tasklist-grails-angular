@@ -8,6 +8,7 @@ class UrlMappings {
         }
 
         "/"(view:"/index")
+        "/tasks"(view:"/tasks")
         "500"(view:'/error')
 	}
 }
