@@ -3,5 +3,5 @@
 ☐ Build-Ergebnis von tasklist-frontend in Build von tasklist-backend integrieren
   ☐ Das Frontend-Projekt kann mittels `lineman build` gebaut werden.
   ☐ Die Ergebnisse stehten in `tasklist-frontend/dist` und müssten nach `tasklist-backend` kopiert werden
-☐ Bootstrap glyphicons in Frontend-Projekt ergänzen.
+✔ Bootstrap glyphicons in Frontend-Projekt ergänzen.  (24.01.2014 22:42)
 

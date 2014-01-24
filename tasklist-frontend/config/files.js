@@ -21,5 +21,8 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('files', {
             "app/js/app.js",
             "app/js/**/*.js"
         ]
+    },
+    webfonts: {
+        root: "fonts"
     }
 });
