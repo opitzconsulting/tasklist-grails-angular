@@ -1,4 +1,5 @@
-☐ Sourcecode-Schnipsel zum "Spinksen" in Dropbox kopieren
+☐ Sourcecode-Schnipsel zum "Spinksen" nach Dropbox kopieren
+☐ Endpoint für das Löschen von Tasks für "archive" ergänzen.
 ☐ Styling von tasks.gsp an Grails anpassen, Bootstrap in `tasklist-backend` entfernen.
 ☐ Projektübergreifendes Build-Skript erstellen
 ☐ Build-Ergebnis von tasklist-frontend in Build von tasklist-backend integrieren
