@@ -31,8 +31,3 @@ Leeres Git-Repository "tasklist"
 *   Ablage-Ort der Ressourcen
 *   ApplicationResources.groovy zeigen
 *   tasks.gsp zeigen
-
-# Todos
-
-*   GitHub Repository unter OPITZ CONSULTING anlegen
-*   Sourcecode-Schnipsel nach Dropbox zum "Spinksen"
