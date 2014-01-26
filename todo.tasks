@@ -6,5 +6,5 @@
   ☐ Das Frontend-Projekt kann mittels `lineman build` gebaut werden.
   ☐ Die Ergebnisse stehten in `tasklist-frontend/dist` und müssten nach `tasklist-backend` kopiert werden
 ✔ Bootstrap glyphicons in Frontend-Projekt ergänzen.  (24.01.2014 22:42)
-☐ Bootstrap glyphicons im Grails-Projekt ergänzen.
+✔ Bootstrap glyphicons im Grails-Projekt ergänzen.  (26.01.2014 16:43)
 
