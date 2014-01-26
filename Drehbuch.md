@@ -6,11 +6,34 @@ Leeres Git-Repository "tasklist"
 
 ## Schritt 1: Scaffolding mit Grails
 
-    cd tasklist
+    // Applikation anlegen
     grails create-app tasklist-backend
-    # - Domain-Objekt "Task" anlegen
-    # - scaffoled controller erzeugen
-    # - Ergebnis zeigen
+
+    // Applikations-Ordner öffnen
+    cd tasklist-backend
+
+    // Domänenobjekt anlegen
+    grails create-domain-class Task
+
+    // Domänenobjekt modellieren
+    package tasklist.backend
+
+    class Task {
+
+        String title
+        boolean done
+
+        static constraints = {
+            title nullable: false, blank: false
+        }
+
+    }
+
+    // Controller anlegen
+    grails create-scaffold-controller tasklist.backend.Task
+
+    // Anwendung starten und präsentieren
+    grails run-app
 
 ## Schritt 2: Client mit Angular ohne Backend
 
