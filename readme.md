@@ -1,4 +1,4 @@
-# Rapid Application Development mit Grail und AngularJS
+# Rapid Application Development mit Grails und AngularJS
 
 Demo-Code zum Vortrag.
 
