@@ -1,0 +1,25 @@
+# tasklist-backend
+
+## Grails
+tasklist-backend/target
+
+## IDEA
+tasklist-backend/.idea
+tasklist-backend/*.iml
+
+## OS X
+tasklist-backend/.DS_Store
+
+# tasklist-frontend
+
+## IDEA
+tasklist-frontend/.idea
+tasklist-frontend/*.iml
+
+## Lineman
+tasklist-frontend/dist
+tasklist-frontend/generated
+tasklist-frontend/node_modules
+
+# OS X
+tasklist-frontend/.DS_Store
