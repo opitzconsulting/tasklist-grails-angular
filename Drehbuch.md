@@ -6,16 +6,20 @@ Leeres Git-Repository "tasklist"
 
 ## Schritt 1: Scaffolding mit Grails
 
-    // Applikation anlegen
+Applikation anlegen
+
     grails create-app tasklist-backend
 
-    // Applikations-Ordner öffnen
+Applikations-Ordner öffnen
+
     cd tasklist-backend
 
-    // Domänenobjekt anlegen
+Domänenobjekt anlegen
+
     grails create-domain-class Task
 
-    // Domänenobjekt modellieren
+Domänenobjekt modellieren
+
     package tasklist.backend
 
     class Task {
@@ -29,10 +33,12 @@ Leeres Git-Repository "tasklist"
 
     }
 
-    // Controller anlegen
+Controller anlegen
+
     grails create-scaffold-controller tasklist.backend.Task
 
-    // Anwendung starten und präsentieren
+Anwendung starten und präsentieren
+
     grails run-app
 
 ## Schritt 2: Client ohne Backend
@@ -108,10 +114,12 @@ Live Template `_oop5` (scope function).
 
 ## Schritt 3: REST-Endpoints
 
-    // Controller erzeugen
+Controller erzeugen
+
     grails create-controller tasklist.backend.Api
 
-    // Controller implementieren
+Controller implementieren
+
     import grails.converters.JSON
 
     class ApiController {
@@ -156,7 +164,8 @@ Live Template `_oop5` (scope function).
 
     }
 
-    // Applikations-Kontext ändern in Config.groovy
+Applikations-Kontext ändern in Config.groovy
+
     grails.app.context = '/'
 
 ## Schritt 4: Backend-Kommunikation
