@@ -2,7 +2,11 @@
 
 ## Ausgangsbasis
 
-Leeres Git-Repository "tasklist"
+Leeres Git-Repository "tasklist":
+
+    git checkout demo-baseline
+    git checkout -b demo-oop
+    git clean -f -d
 
 ## Schritt 1: Scaffolding mit Grails
 
@@ -41,9 +45,23 @@ Anwendung starten und präsentieren
 
     grails run-app
 
+Testdaten erzeugen in BootStrap.groovy
+
+    def init = { servletContext ->
+        ["Create Backend", "Create Frontend", "Present Powerpoints", "Run Application"].each {
+            new Task(title: it, done: false).save(flush: true)
+        }
+    }
+
+Anwendung erneut starten
+
+    grails run-app
+
 ## Schritt 2: Client ohne Backend
 
 *   Gerüst für leere Lineman-Applikation ins Projekt-Verzeichnis kopieren
+*   `cd tasklist-frontend; lineman run`
+*   Bei Bedarf LiveReload starten
 *   Client ohne Backend entwickeln
 
 ### Static markup
@@ -98,6 +116,18 @@ Anwendung starten und präsentieren
 
 Live Template `_oop1`.
 
+### Toggle task
+
+Markup:
+
+    <input type="checkbox" ng-checked="task.done" ng-click="toggle(task)">
+
+Code:
+
+    $scope.toggle = function(task) {
+        task.done = !task.done;
+    };
+
 ### Styling for done tasks
 
 Live Template `_oop2`.
@@ -123,45 +153,28 @@ Controller implementieren
     import grails.converters.JSON
 
     class ApiController {
-
         def tasks(Long id) {
-            switch(request.method) {
+            switch (request.method) {
                 case "GET":
                     if (id)
                         render Task.get(id) as JSON
                     else
                         render Task.list() as JSON
                     break
-
                 case "POST":
                     def task = new Task(request.JSON)
-                    if (task.validate() && task.save()) {
-                        response.status = 201
-                        render task as JSON
-                    } else {
-                        error(403, "Invalid data")
-                    }
+                    task.save()
+                    response.status = 201
+                    render task as JSON
                     break
-
                 case "PUT":
                     def task = Task.get(request.JSON.id)
-                    if (!task) {
-                        error(404, "Task with id ${request?.JSON?.id} not found!")
-                    } else {
-                        task.properties = request.JSON
-                        task.save()
-                        render task as JSON
-                    }
+                    task.properties = request.JSON
+                    task.save()
+                    render task as JSON
                     break
             }
-            
         }
-
-        private void error(int code, String message) {
-            response.status = code
-            render([error: message] as JSON)
-        }
-
     }
 
 Applikations-Kontext ändern in Config.groovy
@@ -195,6 +208,6 @@ Applikations-Kontext ändern in Config.groovy
 
 ## Schritt 5: "Embedded Client" zeigen
 
-*   Ablage-Ort der Ressourcen
+*   Ablage-Ort `web-app/...` der Ressourcen zeigen
 *   `ApplicationResources.groovy` zeigen
 *   `tasks.gsp` zeigen
