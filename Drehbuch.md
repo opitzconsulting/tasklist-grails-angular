@@ -75,15 +75,13 @@ Anwendung erneut starten
     <body>
     <div class="container">
         <h2>Tasks</h2>
-        <div>
-            <span>X of Y tasks remaining</span>
-            <ul class="list-unstyled">
-                <li>
-                    <input type="checkbox">
-                    <span>Some task</span>
-                </li>
-            </ul>
-        </div>
+        <span>X of Y tasks remaining</span>
+        <ul class="list-unstyled">
+            <li>
+                <input type="checkbox">
+                <span>Some task</span>
+            </li>
+        </ul>
     </div>
     <script type="text/javascript" src="/js/app.js"></script>
     </body>
