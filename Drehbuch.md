@@ -92,7 +92,11 @@ Anwendung erneut starten
     angular.module('app', []);
     
     angular.module('app').controller('TaskCtrl', function($scope) {
-        $scope.tasks = [{title: "Task 1", done: true},  {title: "Task 2", done: false}, {title: "Task 3", done: false}];
+        $scope.tasks = [
+            {title: "Task 1", done: true},
+            {title: "Task 2", done: false},
+            {title: "Task 3", done: false}
+        ];
     });
 
 ### Initial binding
@@ -112,7 +116,7 @@ Anwendung erneut starten
 
 ### Remaining tasks
 
-Live Template `_oop1`.
+Live Template `_ng1`.
 
 ### Toggle task
 
@@ -128,17 +132,17 @@ Code:
 
 ### Styling for done tasks
 
-Live Template `_oop2`.
+Live Template `_ng2`.
 
 ### Add new task
 
-Live Templates `_oop3` (HTML) and `_oop4` (scope function).
+Live Templates `_ng3` (HTML) and `_ng4` (scope function).
 
 ### Clean up
 
     [ <a href="" ng-click="cleanup(tasks)">clean up</a> ]
 
-Live Template `_oop5` (scope function).
+Live Template `_ng5` (scope function).
 
 ## Schritt 3: REST-Endpoints
 

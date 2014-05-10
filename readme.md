@@ -1,7 +1,7 @@
 Rapid Application Development mit Grails und AngularJS
 ------------------------------------------------------
 
-Demo-Code zum Vortrag "Rapid Application Development mit Grails und AngularJS" von Stefan Scheidt und Stefan Glase. Die Folien zum Vortrag sind auf  [Slideshare](http://de.slideshare.net/opitzconsulting/rapid-applicationdevelopmentmitgrailsundangular-jsoop2014scheidtglase) abrufbar.
+Demo-Code zum Vortrag "Rapid Application Development mit Grails und AngularJS" von Stefan Scheidt und Stefan Glase. Die Folien zum Vortrag sind auf [Slideshare](http://de.slideshare.net/opitzconsulting/rapid-applicationdevelopmentmitgrailsundangular-jsoop2014scheidtglase) abrufbar.
 
 ### Abstract
 
