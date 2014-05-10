@@ -2,7 +2,7 @@
 
 ## Ausgangsbasis
 
-Leeres Git-Repository "tasklist":
+Leeres Git-Repository "tasklist" erstellen:
 
     git checkout demo-baseline
     git checkout -b demo-oop
@@ -10,19 +10,19 @@ Leeres Git-Repository "tasklist":
 
 ## Schritt 1: Scaffolding mit Grails
 
-Applikation anlegen
+Applikation anlegen:
 
     grails create-app tasklist-backend
 
-Applikations-Ordner öffnen
+Applikations-Ordner öffnen:
 
     cd tasklist-backend
 
-Domänenobjekt anlegen
+Domänenobjekt anlegen:
 
     grails create-domain-class Task
 
-Domänenobjekt modellieren
+Domänenobjekt modellieren:
 
     package tasklist.backend
 
@@ -37,15 +37,15 @@ Domänenobjekt modellieren
 
     }
 
-Controller anlegen
+Controller anlegen:
 
     grails create-scaffold-controller tasklist.backend.Task
 
-Anwendung starten und präsentieren
+Anwendung starten und präsentieren:
 
     grails run-app
 
-Testdaten erzeugen in BootStrap.groovy
+Testdaten erzeugen in `BootStrap.groovy`:
 
     def init = { servletContext ->
         ["Create Backend", "Create Frontend", "Present Powerpoints", "Run Application"].each {
@@ -53,7 +53,7 @@ Testdaten erzeugen in BootStrap.groovy
         }
     }
 
-Anwendung erneut starten
+Anwendung erneut starten:
 
     grails run-app
 
@@ -146,11 +146,11 @@ Live Template `_ng5` (scope function).
 
 ## Schritt 3: REST-Endpoints
 
-Controller erzeugen
+Controller erzeugen:
 
     grails create-controller tasklist.backend.Api
 
-Controller implementieren
+Controller implementieren:
 
     import grails.converters.JSON
 
@@ -179,7 +179,7 @@ Controller implementieren
         }
     }
 
-Applikations-Kontext ändern in Config.groovy
+Applikations-Kontext ändern in `Config.groovy`:
 
     grails.app.context = '/'
 
