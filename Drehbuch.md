@@ -105,7 +105,7 @@ Anwendung erneut starten:
     ...
     <div class="container" ng-controller="TaskCtrl">
         <h2>Tasks</h2>
-        <span>{{remaining(tasks)}} of {{tasks.length}} tasks remaining</span>
+        <span>X of {{tasks.length}} tasks remaining</span>
         <ul class="list-unstyled">
             <li ng-repeat="task in tasks">
                 <input type="checkbox" ng-checked="task.done">
@@ -114,31 +114,29 @@ Anwendung erneut starten:
         </ul>
     </div>    
 
-### Remaining tasks
+### Remaining tasks, toggle task
 
-Live Template `_ng1`.
-
-### Toggle task
+Code: Live Template `_ng1`.
 
 Markup:
 
+    <span>{{remaining(tasks)}} of {{tasks.length}} tasks remaining</span>
+
     <input type="checkbox" ng-checked="task.done" ng-click="toggle(task)">
-
-Code:
-
-    $scope.toggle = function(task) {
-        task.done = !task.done;
-    };
 
 ### Styling for done tasks
 
-Live Template `_ng2`.
+CSS: Live Template `_ng2`.
+
+Markup:
+
+    <span class="done-{{task.done}}">{{task.title}}</span>
 
 ### Add new task
 
 Live Templates `_ng3` (HTML) and `_ng4` (scope function).
 
-### Clean up
+### OPTIONAL - Clean up
 
     [ <a href="" ng-click="cleanup(tasks)">clean up</a> ]
 
@@ -186,6 +184,8 @@ Applikations-Kontext ändern in `Config.groovy`:
 ## Schritt 4: Backend-Kommunikation
 
 ### Task resource
+
+    angular.module('app', ['ngResource']);
 
     angular.module('app').factory('TaskResource', function ($resource) {
         return $resource('/api/tasks/{:id}', null, {update: {method: 'PUT'}});
