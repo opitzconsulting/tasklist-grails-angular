@@ -5,7 +5,7 @@
 Leeres Git-Repository "tasklist" erstellen:
 
     git checkout demo-baseline
-    git checkout -b demo-oop
+    git checkout -b demo-xyz
     git clean -f -d
 
 ## Schritt 1: Scaffolding mit Grails
@@ -180,6 +180,10 @@ Controller implementieren:
 Applikations-Kontext ändern in `Config.groovy`:
 
     grails.app.context = '/'
+
+### Push to GitHub
+
+Diesen Stand nach GitHub schieben.
 
 ## Schritt 4: Backend-Kommunikation
 
