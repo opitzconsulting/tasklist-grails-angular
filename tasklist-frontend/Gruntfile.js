@@ -1,4 +1,4 @@
 /*global module:false*/
-module.exports = function (grunt) {
-    require(process.env['LINEMAN_MAIN']).config.grunt.run(grunt);
+module.exports = function(grunt) {
+  require('./config/lineman').config.grunt.run(grunt);
 };

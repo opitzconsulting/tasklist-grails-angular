@@ -7,16 +7,15 @@
         "name": "Stefan Scheidt",
         "company": "OPITZ CONSULTING Deutschland GmbH"
     },
-    "dependencies": {
-        "protractor": ">=0.8.0",
-        "jasmine-given": "~2.1.0",
-        "grunt": "~0.4.1",
-        "lineman": ">=0.19.2",
-        "lineman-angular": ">=0.0.2",
-        "coffee-script": "~1.6.3"
+    "devDependencies": {
+        "coffee-script": "^1.6.3",
+        "jasmine-given": "^2.6.2",
+        "lineman": "^0.34.0",
+        "lineman-angular": "^0.3.0",
+        "protractor": "^1.2.0-beta1"
     },
-    "engines": {
-        "node": "~>0.10.5",
-        "npm": "~>1.2.18"
+    "scripts": {
+        "start": "lineman run",
+        "test": "lineman spec-ci"
     }
 }
