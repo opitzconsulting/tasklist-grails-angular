@@ -1,17 +1,26 @@
-/* Exports an object that defines
- *  all of the configuration needed by the projects'
- *  depended-on grunt tasks.
+/* Exports a function which returns an object that overrides the default &
+ *   plugin grunt configuration object.
  *
- * You can find the parent object in: node_modules/lineman/config/application.coffee
+ * You can familiarize yourself with Lineman's defaults by checking out:
+ *
+ *   - https://github.com/linemanjs/lineman/blob/master/config/application.coffee
+ *   - https://github.com/linemanjs/lineman/blob/master/config/plugins
+ *
+ * You can also ask Lineman's about config from the command line:
+ *
+ *   $ lineman config #=> to print the entire config
+ *   $ lineman config concat.js #=> to see the JS config for the concat task.
  */
-
-module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application', {
-
-    appTasks: {
-        common: ["jshint", "jst", "concat_sourcemap", "copy:dev", "images:dev", "webfonts:dev", "pages:dev"],
-        dist: ["copy:dist", "images:dist", "webfonts:dist", "pages:dist"]
+module.exports = function(lineman) {
+  return {
+    removeTasks: {
+      common: ["coffee"]
     },
-
+    // ngtemplates: {
+    //   options: {
+    //     module: "myModuleName"
+    //   }
+    // }
     server: {
         // enables HTML5 pushState;
         // Lineman will serve `generated/index.html` for any request that does not match the apiProxy.prefix
@@ -22,5 +31,5 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
             prefix: 'api' // request paths that contain 'api' will now be the only ones forwarded to the apiProxy
         }
     }
-
-});
+  };
+};
