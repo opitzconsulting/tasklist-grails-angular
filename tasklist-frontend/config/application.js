@@ -16,11 +16,11 @@ module.exports = function(lineman) {
     removeTasks: {
       common: ["coffee"]
     },
-    // ngtemplates: {
-    //   options: {
-    //     module: "myModuleName"
-    //   }
-    // }
+    ngtemplates: {
+      options: {
+        module: "tasklist"
+      }
+    },
     server: {
         // enables HTML5 pushState;
         // Lineman will serve `generated/index.html` for any request that does not match the apiProxy.prefix

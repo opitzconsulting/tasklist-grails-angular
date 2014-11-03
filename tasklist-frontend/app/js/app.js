@@ -1,3 +1,17 @@
+(function (angular) {
+    'use strict';
+
+    var app = angular.module('tasklist', [
+        'ngRoute',
+        'tasklist.tasks'
+    ]);
+
+    app.config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.otherwise({redirectTo: '/tasks'});
+    }]);
+
+})(window.angular);
+
 angular.module("app", ["ngResource"]);
 
 
@@ -9,6 +23,7 @@ angular.module("app").factory("TaskResource", function ($q, $resource) {
 
 });
 
+/*
 
 angular.module("app").controller("TaskCtrl", function ($scope, TaskResource) {
 
@@ -46,3 +61,5 @@ angular.module("app").controller("TaskCtrl", function ($scope, TaskResource) {
     };
 
 });
+
+*/
