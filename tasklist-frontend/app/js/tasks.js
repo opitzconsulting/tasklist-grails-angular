@@ -3,7 +3,7 @@
 
     var module = angular.module('tasklist.tasks', [
         'ngRoute',
-        'ngStorage'
+        'ngResource'
     ]);
 
     module.config(function ($routeProvider) {
@@ -14,35 +14,29 @@
             });
     });
 
-    module.factory('TaskRepository', function ($localStorage) {
-        var storage = $localStorage.$default({tasks: [], initialized: false});
-        if (!storage.initialized) {
-            storage.tasks.push({title: 'One', done: false});
-            storage.tasks.push({title: 'Two', done: false});
-            storage.tasks.push({title: 'Three', done: false});
-            storage.initialized = true;
-        }
-        return {
-            allTasks: function () {
-                return storage.tasks;
-            },
-            addTask: function (task) {
-                storage.tasks.push(task);
-            },
-            deleteTaskAtIndex: function (index) {
-                storage.tasks.splice(index, 1);
-            }
-        };
+    module.factory("TaskResource", function ($q, $resource) {
+        return $resource('/api/tasks/:id', { id: '@id' }, {
+            'update': { method: 'PUT' }
+        });
     });
 
-    module.controller('TaskListCtrl', function ($scope, TaskRepository) {
-        $scope.tasks = TaskRepository.allTasks();
+    module.controller('TaskListCtrl', function ($scope, TaskResource) {
+        $scope.tasks = TaskResource.query();
         $scope.addTask = function () {
-            TaskRepository.addTask({title: $scope.newTaskTitle, done: false});
-            $scope.newTaskTitle = '';
+            var newTask = new TaskResource({title: $scope.newTaskTitle, done: false});
+            newTask.$save(function (savedTask) {
+                $scope.tasks.push(savedTask);
+                $scope.newTaskTitle = '';
+            });
+        };
+        $scope.checkTask = function(task) {
+            task.done = !task.done;
+            task.$update();
         };
         $scope.deleteTask = function (index) {
-            TaskRepository.deleteTaskAtIndex(index);
+            $scope.tasks[index].$delete(function() {
+                $scope.tasks.splice(index, 1);
+            });
         };
     });
 

@@ -33,6 +33,14 @@ class ApiController {
 					render task as JSON
 				}
 				break
+
+            case "DELETE":
+                def task = Task.get(id)
+                if (!task)
+                    error(404, "Task with id ${id} not found!")
+                else
+                    task.delete()
+                break
     	}
     	
     }

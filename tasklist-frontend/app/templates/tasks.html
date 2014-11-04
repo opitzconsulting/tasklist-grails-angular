@@ -3,7 +3,7 @@
     <ul class="list-unstyled">
         <li ng-repeat="task in tasks">
             <!--suppress HtmlFormInputWithoutLabel -->
-            <input type="checkbox" ng-model="task.done">
+            <input type="checkbox" ng-checked="task.done" ng-click="checkTask(task)">
             <span ng-class="{strike: task.done}" >{{task.title}}</span>
             <span>[<a ng-click="deleteTask($index)">X</a>]</span>
         </li>
