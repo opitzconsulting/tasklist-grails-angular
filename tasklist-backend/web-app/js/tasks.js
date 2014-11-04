@@ -1,48 +1,52 @@
-angular.module("app", ["ngResource"]);
+(function (angular) {
+    'use strict';
 
+    var module = angular.module('tasklist.tasks', [
+        'ngRoute',
+        'ngResource'
+    ]);
 
-angular.module("app").factory("TaskResource", function ($q, $resource) {
-
-    return $resource('/api/tasks/:id', null, {
-        'update': { method: 'PUT' }
+    module.config(function ($routeProvider) {
+        $routeProvider
+            .when('/tasks', {
+                templateUrl: 'templates/tasks.html',
+                controller: 'TaskListCtrl'
+            });
     });
 
-});
-
-
-angular.module("app").controller("TaskCtrl", function ($scope, TaskResource) {
-
-    $scope.tasks = TaskResource.query();
-
-    $scope.addTask = function () {
-        var newTask = new TaskResource({title: $scope.taskTitle, done: false});
-        newTask.$save(function (savedTask) {
-            $scope.tasks.push(savedTask);
+    module.factory("TaskResource", function ($q, $resource) {
+        return $resource('/api/tasks/:id', { id: '@id' }, {
+            'update': { method: 'PUT' }
         });
-        $scope.taskTitle = '';
-    };
+    });
 
-    $scope.updateTask = function(task) {
-        task.done = !task.done;
-        task.$update();
-    };
+    module.controller('TaskListCtrl', function ($scope, TaskResource) {
+        $scope.tasks = TaskResource.query();
+        $scope.addTask = function () {
+            var newTask = new TaskResource({title: $scope.newTaskTitle, done: false});
+            newTask.$save(function (savedTask) {
+                $scope.tasks.push(savedTask);
+                $scope.newTaskTitle = '';
+            });
+        };
+        $scope.checkTask = function(task) {
+            task.done = !task.done;
+            task.$update();
+        };
+        $scope.deleteTask = function (index) {
+            $scope.tasks[index].$delete(function() {
+                $scope.tasks.splice(index, 1);
+            });
+        };
+    });
 
-    $scope.remaining = function () {
-        var count = 0;
-        angular.forEach($scope.tasks, function (task) {
-            count += task.done ? 0 : 1;
-        });
-        return count;
-    };
+    var app = angular.module('tasklist', [
+        'ngRoute',
+        'tasklist.tasks'
+    ]);
 
-    $scope.archive = function () {
-        var oldTasks = $scope.tasks;
-        $scope.tasks = [];
-        angular.forEach(oldTasks, function (task) {
-            if (!task.done) {
-                $scope.tasks.push(task);
-            }
-        });
-    };
+    app.config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.otherwise({redirectTo: '/tasks'});
+    }]);
 
-});
+})(window.angular);

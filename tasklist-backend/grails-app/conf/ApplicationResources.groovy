@@ -17,8 +17,8 @@ modules = {
     tasks {
         dependsOn 'angularjs'
         dependsOn 'bootstap'
-        resource url: 'js/tasks.js'
         resource url: 'css/tasks.css'
+        resource url: 'js/tasks.js'
     }
 
 }
