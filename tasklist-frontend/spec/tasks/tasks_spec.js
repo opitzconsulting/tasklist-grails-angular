@@ -2,27 +2,13 @@ describe('tasklist.tasks', function () {
 
     beforeEach(module('tasklist.tasks'));
 
-    describe('TaskRepository', function () {
-        describe('addTask', function () {
-            it('adds a task to the end of the list', inject(function (TaskRepository, $localStorage) {
-                spyOn($localStorage, '$default').andReturn({tasks: [], initialized: true});
-                var newTask = {title: 'New Task', done: false};
-
-                TaskRepository.addTask(newTask);
-
-                var allTasks = TaskRepository.allTasks();
-                expect(allTasks[allTasks.length - 1]).toBe(newTask);
-            }));
-        });
-    });
-
     describe('TaskListCtrl', function () {
-        it('loads all tasks', inject(function ($controller, TaskRepository) {
+        it('loads all tasks', inject(function ($controller, TaskResource) {
             var scope = {};
             var allTasks = [];
-            spyOn(TaskRepository, 'allTasks').andReturn(allTasks);
+            spyOn(TaskResource, 'query').andReturn(allTasks);
 
-            $controller('TaskListCtrl', {$scope: scope, TaskRepository: TaskRepository});
+            $controller('TaskListCtrl', {$scope: scope, TaskResource: TaskResource});
 
             expect(scope.tasks).toBe(allTasks);
         }));
