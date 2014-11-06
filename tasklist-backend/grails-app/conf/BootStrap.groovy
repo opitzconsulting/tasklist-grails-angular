@@ -7,6 +7,8 @@ class BootStrap {
             new Task(title: it, done: false).save(flush: true)
         }
     }
+
     def destroy = {
     }
+
 }

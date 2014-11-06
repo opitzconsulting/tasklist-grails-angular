@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <r:require module="tasks"/>
 </head>
 <body>
 <div ng-app="tasklist">
