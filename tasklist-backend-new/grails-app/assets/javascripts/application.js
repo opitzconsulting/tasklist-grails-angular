@@ -6,7 +6,10 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery
-//= require_tree .
+//= require angular
+//= require angular-resource
+//= require angular-route
+//= require tasks
 //= require_self
 
 if (typeof jQuery !== 'undefined') {
