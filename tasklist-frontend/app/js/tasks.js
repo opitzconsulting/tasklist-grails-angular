@@ -15,7 +15,7 @@
     });
 
     module.factory("TaskResource", function ($q, $resource) {
-        return $resource('/api/tasks/:id', { id: '@id' }, {
+        return $resource('/tasklist-backend/tasks/:id', { id: '@id' }, {
             'update': { method: 'PUT' }
         });
     });

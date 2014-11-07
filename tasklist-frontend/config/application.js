@@ -28,7 +28,7 @@ module.exports = function(lineman) {
         apiProxy: {
             enabled: true,
             port: 8080,
-            prefix: 'api' // request paths that contain 'api' will now be the only ones forwarded to the apiProxy
+            prefix: 'tasklist-backend' // request paths that contain 'api' will now be the only ones forwarded to the apiProxy
         }
     }
   };
