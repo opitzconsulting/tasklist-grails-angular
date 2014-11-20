@@ -1,4 +1,20 @@
 <div class="container">
     <h1>Tasks</h1>
-    <p>To be done ...</p>
+    <ul class="list-unstyled">
+        <li ng-repeat="task in tasks">
+            <input type="checkbox" ng-model="task.done">
+            <span ng-class="{strike:task.done}">{{task.title}}</span>
+            <span>[<a ng-click="deleteTask($index)">X</a>]</span>
+        </li>
+    </ul>
+    <form class="form-inline" role="form" ng-submit="addTask()">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="add new todo here" ng-model="newTaskTitle">
+                <span class="input-group-btn">
+                    <input type="submit" class="btn btn-primary" value="Add" ng-disabled="!newTaskTitle">
+                </span>
+            </div>
+        </div>
+    </form>
 </div>
