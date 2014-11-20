@@ -15,8 +15,8 @@
     });
 
     module.factory("TaskResource", function ($q, $resource) {
-        return $resource('/tasklist-backend/tasks/:id', { id: '@id' }, {
-            'update': { method: 'PUT' }
+        return $resource('/tasklist-backend/tasks/:id', {id: '@id'}, {
+            'update': {method: 'PUT'}
         });
     });
 
@@ -29,12 +29,12 @@
                 $scope.newTaskTitle = '';
             });
         };
-        $scope.checkTask = function(task) {
+        $scope.checkTask = function (task) {
             task.done = !task.done;
             task.$update();
         };
         $scope.deleteTask = function (index) {
-            $scope.tasks[index].$delete(function() {
+            $scope.tasks[index].$delete(function () {
                 $scope.tasks.splice(index, 1);
             });
         };
